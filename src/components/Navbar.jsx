@@ -6,13 +6,13 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Contact Us", href: "#contact" },
-    { name: "Help", href: "#help" },
+    { name: "View Passwords", href: "#contact" },
+    { name: "You", href: "#help" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#060816]/90 text-white shadow-lg shadow-black/10 backdrop-blur-2xl">
-      <div className="h-0.5 w-full bg-linear-to-r from-orange-400 via-violet-500 to-cyan-400" />
+      <div className="h-0.5 w-full bg-linear-to-r from-orange-600 via-violet-500 to-cyan-400" />
 
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <div className="pointer-events-none absolute left-1/3 top-0 -z-10 h-20 w-40 rounded-full bg-violet-500/10 blur-3xl" />
@@ -22,14 +22,14 @@ const Navbar = () => {
           aria-label="DropPin home"
           className="group text-2xl font-extrabold tracking-tight transition-transform duration-300 hover:scale-105 sm:text-3xl"
         >
-          <span className="text-slate-300">&lt;</span>
-          <span className="bg-linear-to-r from-orange-300 to-pink-400 bg-clip-text text-transparent">
+          <span className="text-slate-200">&lt;</span>
+          <span className="bg-linear-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
             Drop
           </span>
-          <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
             Pin
           </span>
-          <span className="text-slate-300">/&gt;</span>
+          <span className="text-slate-400">/&gt;</span>
         </a>
 
         <ul className="hidden items-center gap-2 md:flex lg:gap-4">
