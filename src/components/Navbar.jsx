@@ -12,8 +12,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/[0.08] bg-[#080a18]/85 text-white shadow-lg shadow-black/10 backdrop-blur-2xl">
-      <div className="h-px w-full bg-linear-to-r from-transparent via-violet-400/70 to-transparent" />
+    <nav className="sticky top-0 z-50 w-full border-b border-white/8 bg-[#080a18]/85 text-white shadow-lg shadow-black/10 backdrop-blur-2xl">
+      <div className="h-px w-full bg-linear-to-r from-transparent via-violet-500/70 to-transparent" />
 
       <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-8">
         <div className="pointer-events-none absolute left-1/4 top-0 -z-10 h-20 w-40 rounded-full bg-violet-500/10 blur-3xl" />
@@ -38,39 +38,36 @@ const Navbar = () => {
             </svg>
           </span>
           <span className="flex flex-col leading-none">
-            <span className="text-xl font-extrabold tracking-tight sm:text-2xl">
-              <span className="bg-linear-to-r from-orange-400 via-pink-400 to-violet-400 bg-clip-text text-transparent">
+            <span className="text-2xl font-extrabold tracking-tight sm:text-3xl">
+              <span className="bg-linear-to-r from-orange-500 via-pink-500 to-violet-500 bg-clip-text text-transparent">
                 Drop
               </span>
-              <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-violet-500 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
                 Pin
               </span>
             </span>
-            <span className="mt-1 hidden text-[9px] font-semibold tracking-[0.22em] text-slate-500 uppercase sm:block">
+            <span className="mt-1 hidden text-[9px] font-semibold tracking-[0.22em] text-slate-400 uppercase sm:block">
               Password vault
             </span>
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-1 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-1.5 md:flex">
+        <ul className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 md:flex">
           {navLinks.map((link) => (
             <li key={link.name}>
               <NavLink
                 to={link.href}
                 end={link.href === "/"}
                 className={({ isActive }) =>
-                  `relative rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                  `relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-400 ${
                     isActive
-                      ? "bg-linear-to-r from-violet-400/20 to-cyan-400/15 text-cyan-100 shadow-sm shadow-cyan-950/20"
-                      : "text-slate-400 hover:bg-white/[0.06] hover:text-slate-100"
+                      ? "bg-linear-to-r from-violet-400/50 to-cyan-300/20 text-cyan-100 shadow-sm shadow-cyan-950/20"
+                      : "text-slate-400 hover:bg-white/6 hover:text-slate-100"
                   }`
                 }
               >
                 {({ isActive }) => (
-                  <span className="inline-flex items-center gap-2">
-                    {isActive && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,0.8)]" />
-                    )}
+                  <span className="inline-flex items-center gap-1">
                     {link.name}
                   </span>
                 )}
@@ -86,7 +83,7 @@ const Navbar = () => {
             menuOpen ? "Close navigation menu" : "Open navigation menu"
           }
           aria-expanded={menuOpen}
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-200 transition hover:border-violet-400/40 hover:bg-white/[0.08] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/4 text-slate-200 transition hover:border-violet-400/40 hover:bg-white/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 md:hidden"
         >
           {menuOpen ? (
             <svg
@@ -129,7 +126,7 @@ const Navbar = () => {
                     `flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
                       isActive
                         ? "border border-cyan-300/10 bg-linear-to-r from-violet-400/15 to-cyan-400/10 text-cyan-100"
-                        : "text-slate-300 hover:bg-white/[0.05] hover:text-white"
+                        : "text-slate-300 hover:bg-white/5 hover:text-white"
                     }`
                   }
                 >

@@ -8,7 +8,6 @@ import eyeCross from "../images/cross-eye.png";
 import copy_img from "../images/copy.png";
 import edit_img from "../images/edit.png";
 import delete_img from "../images/delete.png";
-import { redirect } from "react-router-dom";
 
 const ViewStore = ({ passwordArray, setpasswordArray, form, setform }) => {
   const [visiblePasswordIds, setvisiblePasswordIds] = useState([]);
@@ -72,6 +71,15 @@ const ViewStore = ({ passwordArray, setpasswordArray, form, setform }) => {
     navigator.clipboard.writeText(text);
   };
 
+  const cardColors = [
+    "border-cyan-300/20 bg-cyan-900/25",
+    "border-orange-300/20 bg-orange-900/25",
+    "border-violet-300/20 bg-violet-900/25",
+    "border-rose-300/20 bg-rose-900/25",
+    "border-emerald-300/20 bg-emerald-900/25",
+    "border-amber-300/20 bg-amber-900/25",
+  ];
+
   return (
     <>
       <ToastContainer
@@ -103,7 +111,7 @@ const ViewStore = ({ passwordArray, setpasswordArray, form, setform }) => {
         </div>
 
         <main className="relative mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-          <header className="relative mx-auto mb-10 max-w-3xl px-5 py-8 text-center sm:mb-14 sm:px-10 sm:py-10">
+          <header className="viewstore-header relative mx-auto mb-10 max-w-3xl px-5 py-8 text-center sm:mb-14 sm:px-10 sm:py-10">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute -right-16 -top-24 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl"
@@ -114,16 +122,19 @@ const ViewStore = ({ passwordArray, setpasswordArray, form, setform }) => {
             />
 
             <div className="relative">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/5 px-4 py-1.5 text-xs font-semibold tracking-[0.16em] text-violet-200 uppercase">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.8)]" />
-                Your personal vault
+              <div className="viewstore-header__badge mb-4 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/5 px-4 py-1.5 text-xs font-semibold tracking-[0.16em] text-violet-200 uppercase">
+                <span
+                  aria-hidden="true"
+                  className="viewstore-header__status-dot h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.8)]"
+                />
+                Your own personal vault
               </div>
 
               <h1
                 aria-label="DropPin"
-                className="mx-auto flex h-20 w-20 items-center justify-center sm:h-24 sm:w-24"
+                className="viewstore-header__mark mx-auto flex h-20 w-20 items-center justify-center sm:h-24 sm:w-24"
               >
-                <span className="relative flex h-16 w-16 animate-pulse items-center justify-center rounded-[1.35rem] bg-linear-to-br from-orange-400 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/30 sm:h-20 sm:w-20">
+                <span className="viewstore-header__logo relative flex h-16 w-16 items-center justify-center rounded-[1.35rem] bg-linear-to-br from-orange-400 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/30 sm:h-20 sm:w-20">
                   <span className="absolute inset-1 rounded-[1.1rem] bg-[#111326]" />
                   <svg
                     aria-hidden="true"
@@ -161,7 +172,7 @@ const ViewStore = ({ passwordArray, setpasswordArray, form, setform }) => {
                 </span>
               </h1>
 
-              <div className="mx-auto mt-4 inline-flex items-center gap-3 rounded-full border border-cyan-300/15 bg-slate-950/35 px-4 py-2">
+              <div className="viewstore-header__vault-count mx-auto mt-4 inline-flex items-center gap-3 rounded-full border border-cyan-300/15 bg-slate-950/35 px-4 py-2">
                 <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-cyan-300/10 text-cyan-200">
                   <svg
                     aria-hidden="true"
@@ -188,7 +199,10 @@ const ViewStore = ({ passwordArray, setpasswordArray, form, setform }) => {
                 </span>
               </div>
 
-              <div className="mx-auto mt-7 h-px w-48 bg-linear-to-r from-transparent via-cyan-400/70 to-transparent" />
+              <div
+                aria-hidden="true"
+                className="viewstore-header__divider mx-auto mt-7 h-px w-48"
+              />
             </div>
           </header>
 
@@ -246,11 +260,16 @@ const ViewStore = ({ passwordArray, setpasswordArray, form, setform }) => {
                   const isPasswordVisible = visiblePasswordIds.includes(
                     item.id,
                   );
+                  const colorIdx =
+                    [...item.id].reduce(
+                      (sum, char) => sum + char.charCodeAt(0),
+                      0,
+                    ) % cardColors.length;
 
                   return (
                     <article
                       key={item.id}
-                      className="group rounded-2xl border border-white/8 bg-slate-950/45 p-4 transition duration-200 hover:border-cyan-300/20 hover:bg-slate-950/70 sm:p-5"
+                      className={`group rounded-2xl border p-4 transition duration-200 hover:brightness-110 sm:p-5 ${cardColors[colorIdx]}`}
                     >
                       <div className="flex min-w-0 items-center gap-3">
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-300/15 bg-cyan-300/[0.07] text-sm font-bold uppercase text-cyan-100">

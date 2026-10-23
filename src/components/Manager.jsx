@@ -70,52 +70,46 @@ const Manager = ({ passwordArray, setpasswordArray, form, setform }) => {
         transition={Bounce}
       />
       <div className="home-page relative isolate min-h-screen overflow-hidden text-slate-100">
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-40 left-1/2 h-125 w-125 -translate-x-1/2 rounded-full bg-violet-600/20 blur-[130px]" />
-
-          <div className="absolute -left-37.5 top-[35%] h-100 w-100 rounded-full bg-cyan-500/10 blur-[120px]" />
-
-          <div className="absolute -right-32 -bottom-25 h-100 w-100 rounded-full bg-orange-500/10 blur-[130px]" />
-
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.06)_1px,transparent_0)] bg-size-[26px_26px]" />
-
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#060816]/10 to-[#060816]/55" />
+        <div
+          aria-hidden="true"
+          className="home-page__backdrop pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+        >
+          <div className="home-page__orb home-page__orb--violet" />
+          <div className="home-page__orb home-page__orb--cyan" />
+          <div className="home-page__orb home-page__orb--rose" />
+          <div className="home-page__grid" />
+          <div className="home-page__vignette" />
         </div>
 
         <main className="relative mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-          <header className="mb-10 text-center sm:mb-14">
-            <div className="mb-3 inline-flex items-center rounded-full border border-violet-400/20 bg-violet-400/5 px-4 py-1.5 text-xs font-medium tracking-[0.2em] text-violet-200 uppercase">
+          <header className="home-header mb-10 text-center sm:mb-14">
+            <div className="home-header__badge mb-3 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/5 px-4 py-1.5 text-xs font-medium tracking-[0.2em] text-violet-200 uppercase">
+              <span aria-hidden="true" className="home-header__status-dot" />
               Your personal vault
             </div>
 
-            <h1 className="cursor-pointer text-4xl font-extrabold tracking-tight sm:text-5xl">
+            <h1 className="home-header__title cursor-pointer text-4xl font-extrabold tracking-tight sm:text-5xl">
               <span className="text-slate-200">&lt;</span>
-              <span className="bg-linear-to-r from-orange-500 via-pink-500 to-violet-500 bg-clip-text text-transparent">
+              <span className="home-header__word home-header__word--drop bg-linear-to-r from-orange-500 via-pink-500 to-violet-500 bg-clip-text text-transparent">
                 Drop
               </span>
-              <span className="bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+              <span className="home-header__word home-header__word--pin bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 Pin
               </span>
               <span className="text-slate-400">/&gt;</span>
             </h1>
 
-            <p className="mt-4 text-sm text-slate-400 sm:text-base">
+            <p className="home-header__description mt-4 text-sm text-slate-400 sm:text-base">
               Your passwords, organized in one secure place.
             </p>
 
-            <div className="mx-auto mt-7 h-px w-100 bg-linear-to-r from-transparent via-orange-500 to-transparent" />
+            <div
+              aria-hidden="true"
+              className="home-header__divider mx-auto mt-7 h-px w-200"
+            />
           </header>
 
-          <section className="relative rounded-3xl bg-white/4.5 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-8">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute left-0 top-0 h-1/2 w-1/2 rounded-tl-3xl border-l border-t border-white/20"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 right-0 h-1/2 w-1/2 rounded-br-3xl border-b border-r border-white/20"
-            />
-
+          <section className="rounded-3xl bg-white/5 p-5 border border-white/30 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-8">
             <div className="mb-7 flex items-center gap-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-violet-400/20 bg-linear-to-br from-violet-500/20 to-cyan-400/10">
                 <svg
