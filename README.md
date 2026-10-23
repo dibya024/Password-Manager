@@ -1,118 +1,87 @@
-# 🔐 DropPin — Password Manager
+# DropPin — Password Manager
 
-DropPin is a password manager web application built with React and Vite. It provides a simple interface for managing saved credentials in one place.
+DropPin is a React web app for keeping website login details together in a single browser-based vault. It includes a responsive interface for adding, viewing, editing, and deleting saved logins.
 
-## ✨ Features
+> **Security notice:** This is a learning project, not a secure password manager. Login details are stored in browser `localStorage` without encryption or authentication. Do not use it to store real or sensitive passwords.
 
-- 🔑 **Password Management** — Add and manage your saved credentials.
-- 👁️ **Show/Hide Passwords** — Toggle password visibility.
-- 📋 **Easy Access** — View and organize your saved entries.
-- 🎨 **Clean UI** — A simple, responsive interface.
-- ⚡ **Fast Performance** — Powered by React and Vite.
+## Features
 
-> Update this feature list to match the functionality you've implemented.
+- Add a website, username, and password to the vault.
+- View saved logins, with a consistent color accent for each entry.
+- Reveal or hide saved passwords.
+- Copy website addresses, usernames, and passwords to the clipboard.
+- Edit or delete saved entries.
+- Persist entries in the current browser using `localStorage`.
+- Navigate between Home, View Store, Settings, and Profile.
+- Responsive layout with animated gradients and reduced-motion support.
 
-## 🛠️ Tech Stack
+## Tech stack
 
-- **React** — Component-based user interface
-- **Vite** — Development server and build tool
-- **JavaScript (ES6+)** — Application logic
-- **CSS** — Styling
-- **ESLint** — Code quality and linting
+- React
+- Vite
+- React Router
+- Tailwind CSS
+- React Toastify
+- UUID
+- ESLint
 
-## 🚀 Getting Started
+## Getting started
 
 ### Prerequisites
 
-Make sure you have installed:
+- Node.js and npm
 
-- [Node.js](https://nodejs.org/)
-- npm (included with Node.js)
-- [Git](https://git-scm.com/)
+### Install and run
 
-### Installation
+From the directory containing `package.json`:
 
-1. Clone the repository:
+```bash
+npm install
+npm run dev
+```
 
-   ```bash
-   git clone https://github.com/dibya024/Password-Manager.git
-   ```
+Open the local URL printed by Vite, usually `http://localhost:5173/`.
 
-2. Navigate to the project directory:
+## Available scripts
 
-   ```bash
-   cd Password-Manager
-   ```
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Build the app for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
 
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open the local URL displayed in your terminal, usually `http://localhost:5173/`.
-
-## 📁 Project Structure
+## Project structure
 
 ```text
-Password-Manager/
+DropPin/
 ├── public/
 ├── src/
 │   ├── assets/
 │   ├── components/
 │   │   ├── Footer.jsx
 │   │   ├── Manager.jsx
-│   │   └── Navbar.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Profile.jsx
+│   │   ├── Settings.jsx
+│   │   └── ViewStore.jsx
 │   ├── images/
 │   ├── App.jsx
 │   ├── App.css
 │   ├── index.css
 │   └── main.jsx
-├── .gitignore
 ├── eslint.config.js
 ├── index.html
 ├── package.json
 └── vite.config.js
 ```
 
-## 🧑‍💻 Available Scripts
+## Data and security
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start the development server |
-| `npm run build` | Build the application for production |
-| `npm run preview` | Preview the production build |
-| `npm run lint` | Run ESLint checks |
+Saved logins are written to the browser's `localStorage` under the `passwords` key. This storage is specific to the browser and origin; it is not encrypted, synced, or protected by an account. Anyone with access to the browser profile or page scripts may be able to read it.
 
-## 🔒 Security Note
+Do not store real credentials in this app. A production password manager would require, among other things, reviewed encryption and key management, authentication, secure recovery, and a threat model.
 
-This project is intended for learning and development unless its security has been independently reviewed.
+## Author
 
-**Do not store real passwords or sensitive credentials in an unprotected application.** Before using DropPin with real credentials, implement and verify appropriate encryption, secure key management, authentication where needed, and safe storage practices.
-
-Never commit API keys, encryption keys, `.env` files, or real user credentials to GitHub.
-
-## 🗺️ Future Improvements
-
-- [ ] Add secure password storage and encryption.
-- [ ] Implement password generation.
-- [ ] Add search and filtering.
-- [ ] Add copy-to-clipboard functionality.
-- [ ] Improve mobile responsiveness.
-- [ ] Add authentication and secure backup options.
-
-## 👨‍💻 Author
-
-**Dibya Sahoo**
-
-- GitHub: [@dibya024](https://github.com/dibya024)
-
-## 📄 License
-
-This project is currently available for learning and personal development. Add a license file if you intend to specify formal permissions for reuse and distribution.
+**Dibyaranjan Sahoo** · [GitHub @dibya024](https://github.com/dibya024)
